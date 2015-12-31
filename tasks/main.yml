@@ -1,0 +1,12 @@
+---
+# tasks file for grafana
+
+- name: install grafana
+  sudo_user: root
+  yum: state=present name=https://grafanarel.s3.amazonaws.com/builds/grafana-2.5.0-1.x86_64.rpm
+  environment: proxy_env
+
+- name: enable and start the grafana service
+  sudo_user: root
+  service: name=grafana-server enabled=true state=started
+
